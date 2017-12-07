@@ -1,0 +1,39 @@
+.footer {
+  width: 100%;
+  text-align: center;
+  .column{
+    //display: flex;
+    //justify-content: center;
+    color: $white-7;
+    font-weight: 500;
+    font-size: 12px;
+    
+
+    span {
+      margin-top: 5px;
+      font-weight: 300;
+      margin-right: 5px;
+      margin-left: 5px;
+      
+    }
+      &:last-child {
+        color: $white-3;
+        margin-top: 5px;
+      } 
+    .listItem{
+      display: inline;
+      margin-right: 5px;
+      justify-content: center;
+      &:last-child {
+        &:before {
+          content:'/';
+          margin-left: -5px;
+          margin-right: 5px;
+        }
+      }
+      .email{
+        cursor: pointer;
+      }
+    }
+  }
+}

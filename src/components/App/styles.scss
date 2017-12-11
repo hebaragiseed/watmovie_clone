@@ -1,7 +1,26 @@
 @import 'reset-css/reset.css';
 
 
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+  width: 100%;
+  border: 5px slateblue solid;
+}
 body {
    background-color: $bg-color;
-   font-family: "Noto Sans", "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif
+   font-family: "Noto Sans", "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
+   height: 100%;
+  }
+body > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border: 1px solid green;
+}
+  img {
+    max-width: 100%;
   }

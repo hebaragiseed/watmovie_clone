@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.scss';
-import { LoginForm, SignupForm } from 'components/AuthForms';
+import  LoginForm from 'components/LoginForm';
+import  SignupForm from 'components/SignupForm';
 import logo from 'images/watchaLogo.svg';
 
 
@@ -12,7 +14,7 @@ const Auth = (props, context) => (
           <div>
           <img src={logo} className="App-logo" alt="logo" />
           <span onClick={props.changeAction} className={styles.changeBtn}>
-            회원가입
+            {context.t('회원가입')}
           </span>
           </div>
         )}
@@ -20,7 +22,7 @@ const Auth = (props, context) => (
           <div>
           <img src={logo} className="App-logo" alt="logo" />
           <span onClick={props.changeAction} className={styles.changeBtn}>
-            로그인
+            {context.t('로그인')}
           </span>
           </div>
         )}
@@ -34,5 +36,10 @@ const Auth = (props, context) => (
     </div>
   </div>
 );
+
+Auth.contextTypes = {
+  t: PropTypes.func.isRequired
+}
+
 
 export default Auth;

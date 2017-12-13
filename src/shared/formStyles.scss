@@ -1,0 +1,118 @@
+//공통
+div.formComponent {
+  max-width: 300px;
+  width: 300px;
+  color: $white;
+
+  .textBox{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    font-size: $font-m;
+    line-height: 27px;
+    h2{
+      font-size: $font-m;
+    }
+    span {
+      font-size: $font-s;
+      font-weight: $fontW-s;
+    }
+
+  }
+  //LoginForm
+  form.loginFormBox {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(154,151,161,0.2);
+    label {
+      padding: 10px 42px 10px 14px;
+      background-color: $white;
+
+      input {
+        font-size: 16px;
+        line-height: 24px;
+        width: 100%;
+        border: 0;
+        background-color: $input-yellow;
+      }
+    }
+    .emailLabel{
+      @include inputBoxBorder(up);
+      border-bottom: 1px solid rgba(154,151,161,0.2);
+    }
+    .passwordLabel {
+      @include inputBoxBorder(under);
+    }
+    input[type='submit'] {
+      @include submitButton(green);
+      margin-top: 16px;
+      margin-bottom: 21px;
+      cursor: pointer;
+    }
+  }  
+
+  //SignupForm
+  .signupFormBox {
+    display: flex;
+    flex-direction: column;
+    
+    margin-bottom: 15px;
+    .signBox {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(154,151,161,0.2);
+      label {
+        padding: 10px 42px 10px 14px;
+        background-color: $white;
+        &:first-child {
+          @include inputBoxBorder(up);
+        }
+        &:last-child {
+          @include inputBoxBorder(under);
+        }
+        input {
+          font-size: 16px;
+          line-height: 24px;
+          width: 100%;
+          border: 0;
+          background-color: $input-yellow;
+        }
+      }
+    }
+    .policyFormBox {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      font-size: $font-s;
+      font-weight: $fontW-s;
+      line-height: 24px;
+    }
+    .signupBtnBox {
+      margin-top: 16px;
+      padding-bottom: 0;
+      border-bottom: 0;      
+      input{
+        @include submitButton(green);
+        cursor: pointer;      
+      }    
+    }
+  }
+  //공통
+  .facebookText,
+  .payText {
+    display: inline-block;
+    margin-bottom: 13px;
+    font-size: $font-s;
+    font-weight: $fontW-s;
+  }
+  .facebookLink {
+    @include submitButton(blue);
+    cursor: pointer;
+    font-size: 15px;
+    i {
+      margin-left: 20px;
+    }
+  }
+}

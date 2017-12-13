@@ -1,0 +1,74 @@
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "회원가입"
+msgstr "Sign Up"
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "로그인"
+msgstr "Login"
+
+#: src/components/AuthForms/index.js
+msgid "비밀번호를 잊어버렸어요"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "비밀번호 (6자이상)"
+msgstr "Password (min6)"
+
+#: src/components/AuthForms/index.js
+msgid "이전에 Facebook으로 가입하셨나요?"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Facebook으로 로그인"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "이름(홍길동)"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "example@gmail.com"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "전체약관에 동의합니다"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "왓챠 서비스 이용 약관에 동의합니다"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "왓챠플레이 서비스 이용약관에 동의합니다"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "개인 정보 취급 방침에 동의합니다"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "가입 완료"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "결제 정보요? 충분히 둘러보기고 입력해도 늦지 않아요"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "고객 센터"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "유료"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "제휴 및 대외 협력"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "주식회사 프로그램스 / 대표 박태훈 / 서울 특별시 강남구 도산대로 155 국제빌딩 3층 / 사업자등록번호 211-88-66013 / 통신판매업 신고번호 제 2015-서울강남-03855호 / 대표번호 02-515-9985"
+msgstr ""
+

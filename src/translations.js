@@ -1,5 +1,6 @@
 export const translations= {
-  ko: {
-    'login': '로그인'
+  es: {
+    '로그인': 'login',
+    '고객 센터': 'customer center'
   }
 }

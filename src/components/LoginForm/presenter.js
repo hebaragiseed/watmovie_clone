@@ -41,12 +41,13 @@ export const LoginForm = (props, context) => (
     <span className={formStyles.facebookText}>{context.t('이전에 Facebook으로 가입하셨나요?')}</span>
     <span>
       <FacebookLogin
-        appId="902218256614849"
+        appId="662921707430698"
         autoLoad={true}
         fields="name,email,picture"
         callback={props.handleFacebookLogin}
         cssClass={formStyles.facebookLink}
-        icon='fa-facebook-official'
+        icon="fa-facebook-official"
+        textButton={context.t("facebook으로 로그인")}
       />
     </span>
   </div>

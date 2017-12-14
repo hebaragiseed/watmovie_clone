@@ -111,8 +111,11 @@ div.formComponent {
     @include submitButton(blue);
     cursor: pointer;
     font-size: 15px;
+    position: relative;
     i {
-      margin-left: 20px;
+      position: absolute;
+      top: 16px;
+      left: 20px;
     }
   }
 }

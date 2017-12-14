@@ -3,11 +3,11 @@
 //actions
 
 //action creators
-
+//API actions
 //initial state
 const initialState = {
   isLoggedIn: localStorage.getItem('jwt') || false
-}
+};
 //reducer
 function reducer(state = initialState, action) {
   switch(action.type) {

@@ -6,7 +6,7 @@ import store, { history } from 'redux/configureStore';
 import I18n from 'redux-i18n';
 import App from 'components/App';
 import { translations } from 'translations';
-import { database } from './firebase';
+
 
 
 console.log(store.getState())

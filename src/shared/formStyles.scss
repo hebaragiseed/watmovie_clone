@@ -107,7 +107,7 @@ div.formComponent {
     font-size: $font-s;
     font-weight: $fontW-s;
   }
-  .facebookLink {
+  .googleLink {
     @include submitButton(blue);
     cursor: pointer;
     font-size: 15px;

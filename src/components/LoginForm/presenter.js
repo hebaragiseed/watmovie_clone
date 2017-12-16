@@ -1,8 +1,8 @@
 import React from 'react';
-import FacebookLogin from 'react-facebook-login';
+//import FacebookLogin from 'react-facebook-login';
 import PropTypes from 'prop-types';
 import formStyles from 'shared/formStyles.scss';
-
+//import {googleLogin} from 'redux/modules/user';
 export const LoginForm = (props, context) => (
   <div className={formStyles.formComponent}>
     <div className={formStyles.textBox}>
@@ -39,16 +39,8 @@ export const LoginForm = (props, context) => (
       </div>
     </form>
     <span className={formStyles.facebookText}>{context.t('이전에 Facebook으로 가입하셨나요?')}</span>
-    <span>
-      <FacebookLogin
-        appId="662921707430698"
-        autoLoad={true}
-        fields="name,email,picture"
-        callback={props.handleFacebookLogin}
-        cssClass={formStyles.facebookLink}
-        icon="fa-facebook-official"
-        textButton={context.t("facebook으로 로그인")}
-      />
+    <span className={formStyles.googleLink} onClick={props.handleGoogleLogin}>
+      googleLink
     </span>
   </div>
 );
@@ -57,7 +49,7 @@ LoginForm.propTypes = {
   userpasswordValue: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  handleFacebookLogin: PropTypes.func.isRequired
+  handleGoogleLogin: PropTypes.func.isRequired
 }
 
 LoginForm.contextTypes = {

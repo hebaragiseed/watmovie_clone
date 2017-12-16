@@ -6,15 +6,16 @@ class Container extends Component{
     useremail: '',
     userpassword: ''
   }
-  render() {
+  render() {console.log(this.props)
     const { useremail, userpassword } = this.state;
     return (
       <LoginForm 
         handleInputChange={this._handleInputChange}
-        handleFacebookLogin={this._handleFacebookLogin}
+        handleGoogleLogin={this._handleGoogleLogin}
         handleSubmit={this._handleSubmit}
         useremailValue={useremail}
-        userpasswordValue={userpassword} />
+        userpasswordValue={userpassword}
+        />
     )
   }
   _handleInputChange = event => {
@@ -27,8 +28,7 @@ class Container extends Component{
   _handleSubmit = event => {
     event.preventDefault()
   }
-  _handleFacebookLogin = response => 
-  console.log(response);
+  _handleGoogleLogin = (props) => (this.props.loginGoogleUser())
 }
 
 export default Container;

@@ -2,7 +2,7 @@ import React from 'react';
 //import FacebookLogin from 'react-facebook-login';
 import PropTypes from 'prop-types';
 import formStyles from 'shared/formStyles.scss';
-//import {googleLogin} from 'redux/modules/user';
+
 export const LoginForm = (props, context) => (
   <div className={formStyles.formComponent}>
     <div className={formStyles.textBox}>
@@ -13,10 +13,10 @@ export const LoginForm = (props, context) => (
       <label className={formStyles.emailLabel}>
         <input
           type="email"
-          placeholder="email@example@gamil.com"
+          placeholder="example@gamil.com"
           onChange={props.handleInputChange}
-          value={props.useremailValue}
-          name="useremail"
+          value={props.emailValue}
+          name="email"
           />
       </label>
       <label className={formStyles.passwordLabel}>
@@ -24,8 +24,8 @@ export const LoginForm = (props, context) => (
           type="password"
           placeholder={context.t("비밀번호 (6자이상)")}
           onChange={props.handleInputChange}
-          value={props.userpasswordValue}
-          name="userpassword"
+          value={props.passwordValue}
+          name="password"
           />
       </label>
       <div 
@@ -45,8 +45,8 @@ export const LoginForm = (props, context) => (
   </div>
 );
 LoginForm.propTypes = {
-  useremailValue: PropTypes.string.isRequired,
-  userpasswordValue: PropTypes.string.isRequired,
+  emailValue: PropTypes.string.isRequired,
+  passwordValue: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleGoogleLogin: PropTypes.func.isRequired

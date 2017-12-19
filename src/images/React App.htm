@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <style type="text/css">/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}</style><style type="text/css">* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+html {
+  height: 100%;
+  width: 100%; }
+
+body {
+  font-family: "Noto Sans", "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
+  height: 100%;
+  background: url(/static/media/radioStar.a67470fc.jpg) no-repeat;
+  background-size: cover; }
+
+body > div {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  height: 100%;
+  background-color: rgba(25, 25, 25, 0.84); }
+
+img {
+  max-width: 100%; }
+</style><style type="text/css">.src-components-Auth-styles__auth--3aO2D {
+  height: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column; }
+  .src-components-Auth-styles__auth--3aO2D .src-components-Auth-styles__column--1_T6b:last-child {
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center; }
+  .src-components-Auth-styles__auth--3aO2D .src-components-Auth-styles__column--1_T6b .src-components-Auth-styles__changeBtnbox--3Y8XQ > div {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    height: 80px;
+    padding: 0 50px; }
+    .src-components-Auth-styles__auth--3aO2D .src-components-Auth-styles__column--1_T6b .src-components-Auth-styles__changeBtnbox--3Y8XQ > div .src-components-Auth-styles__changeBtn--1q77K {
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 23px;
+      background-color: #ffffff;
+      color: #121218;
+      font-size: 13px;
+      height: 32px;
+      line-height: 32px;
+      padding: 0 18px;
+      border-radius: 40px; }
+</style><style type="text/css">div.src-shared-formStyles__formComponent--3KHAv {
+  max-width: 300px;
+  width: 300px;
+  color: #ffffff; }
+  div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__textBox--1yHI2 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    margin-bottom: 14px;
+    font-size: 18px;
+    line-height: 27px; }
+    div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__textBox--1yHI2 h2 {
+      font-size: 18px; }
+    div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__textBox--1yHI2 span {
+      font-size: 12px;
+      font-weight: 300; }
+  div.src-shared-formStyles__formComponent--3KHAv form.src-shared-formStyles__loginFormBox--2bGjb {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(154, 151, 161, 0.2); }
+    div.src-shared-formStyles__formComponent--3KHAv form.src-shared-formStyles__loginFormBox--2bGjb label {
+      padding: 10px 42px 10px 14px;
+      background-color: #ffffff; }
+      div.src-shared-formStyles__formComponent--3KHAv form.src-shared-formStyles__loginFormBox--2bGjb label input {
+        font-size: 16px;
+        line-height: 24px;
+        width: 100%;
+        border: 0;
+        background-color: #faffbd; }
+    div.src-shared-formStyles__formComponent--3KHAv form.src-shared-formStyles__loginFormBox--2bGjb .src-shared-formStyles__emailLabel--30uJU {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom: 1px solid rgba(154, 151, 161, 0.2); }
+    div.src-shared-formStyles__formComponent--3KHAv form.src-shared-formStyles__loginFormBox--2bGjb .src-shared-formStyles__passwordLabel--g6Obe {
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px; }
+    div.src-shared-formStyles__formComponent--3KHAv form.src-shared-formStyles__loginFormBox--2bGjb input[type='submit'] {
+      height: 48px;
+      border: 0;
+      border-radius: 40px;
+      width: 100%;
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 40px;
+      font-weight: 300;
+      background-color: #07bb91;
+      margin-top: 16px;
+      margin-bottom: 21px;
+      cursor: pointer; }
+  div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    margin-bottom: 15px; }
+    div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw .src-shared-formStyles__signBox--1pnEL {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+          flex-direction: column;
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(154, 151, 161, 0.2); }
+      div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw .src-shared-formStyles__signBox--1pnEL label {
+        padding: 10px 42px 10px 14px;
+        background-color: #ffffff; }
+        div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw .src-shared-formStyles__signBox--1pnEL label:first-child {
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px; }
+        div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw .src-shared-formStyles__signBox--1pnEL label:last-child {
+          border-bottom-right-radius: 4px;
+          border-bottom-left-radius: 4px; }
+        div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw .src-shared-formStyles__signBox--1pnEL label input {
+          font-size: 16px;
+          line-height: 24px;
+          width: 100%;
+          border: 0;
+          background-color: #faffbd; }
+    div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw .src-shared-formStyles__policyFormBox--1Ev5u {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+          flex-direction: column;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 24px; }
+    div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw .src-shared-formStyles__signupBtnBox--1uG_7 {
+      margin-top: 16px;
+      padding-bottom: 0;
+      border-bottom: 0; }
+      div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__signupFormBox--hqVTw .src-shared-formStyles__signupBtnBox--1uG_7 input {
+        height: 48px;
+        border: 0;
+        border-radius: 40px;
+        width: 100%;
+        color: #ffffff;
+        font-size: 18px;
+        line-height: 40px;
+        font-weight: 300;
+        background-color: #07bb91;
+        cursor: pointer; }
+  div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__facebookText--1oFQ5,
+  div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__payText--mJLuV {
+    display: inline-block;
+    margin-bottom: 13px;
+    font-size: 12px;
+    font-weight: 300; }
+  div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__googleLink--1aOlC {
+    height: 48px;
+    border: 0;
+    border-radius: 40px;
+    width: 100%;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 40px;
+    font-weight: 300;
+    background-color: #4065b3;
+    cursor: pointer;
+    font-size: 15px;
+    position: relative; }
+    div.src-shared-formStyles__formComponent--3KHAv .src-shared-formStyles__googleLink--1aOlC i {
+      position: absolute;
+      top: 16px;
+      left: 20px; }
+</style><style type="text/css">.src-components-Footer-styles__footer--2tvn_ {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center; }
+  .src-components-Footer-styles__footer--2tvn_ .src-components-Footer-styles__column--31z1- {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    font-size: 12px; }
+    .src-components-Footer-styles__footer--2tvn_ .src-components-Footer-styles__column--31z1- span {
+      margin-top: 5px;
+      font-weight: 300;
+      margin-right: 5px;
+      margin-left: 5px; }
+    .src-components-Footer-styles__footer--2tvn_ .src-components-Footer-styles__column--31z1-:last-child {
+      color: rgba(255, 255, 255, 0.3);
+      margin-top: 5px; }
+    .src-components-Footer-styles__footer--2tvn_ .src-components-Footer-styles__column--31z1- .src-components-Footer-styles__listItem--18Vzi {
+      display: inline;
+      margin-right: 5px;
+      -ms-flex-pack: center;
+          justify-content: center; }
+      .src-components-Footer-styles__footer--2tvn_ .src-components-Footer-styles__column--31z1- .src-components-Footer-styles__listItem--18Vzi:last-child:before {
+        content: '/';
+        margin-left: -5px;
+        margin-right: 5px; }
+      .src-components-Footer-styles__footer--2tvn_ .src-components-Footer-styles__column--31z1- .src-components-Footer-styles__listItem--18Vzi .src-components-Footer-styles__email--34hOR {
+        cursor: pointer; }
+</style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"><div class="src-components-Auth-styles__auth--3aO2D"><div class="src-components-Auth-styles__column--1_T6b"><div class="src-components-Auth-styles__changeBtnbox--3Y8XQ"><div><img src="./React App_files/watchaLogo.c405fcc7.svg" class="App-logo" alt="logo"><span class="src-components-Auth-styles__changeBtn--1q77K">로그인</span></div></div></div><div class="src-components-Auth-styles__column--1_T6b"><div><div class="src-shared-formStyles__formComponent--3KHAv"><div class="src-shared-formStyles__textBox--1yHI2"><h2>회원가입</h2></div><form class="src-shared-formStyles__signupFormBox--hqVTw"><div class="src-shared-formStyles__signBox--1pnEL"><label><input type="name" placeholder="이름(홍길동)" name="name"></label><label><input type="email" placeholder="example@gmail.com" name="email"></label><label><input type="password" placeholder="비밀번호 (6자이상)" name="password"></label></div><div class="src-shared-formStyles__policyFormBox--1Ev5u"><label><input type="checkbox" value="on">전체약관에 동의합니다</label><label><input type="checkbox" value="on">왓챠 서비스 이용 약관에 동의합니다</label><label><input type="checkbox" value="on">왓챠플레이 서비스 이용약관에 동의합니다</label><label><input type="checkbox" value="on">개인 정보 취급 방침에 동의합니다</label></div><div class="src-shared-formStyles__signupBtnBox--1uG_7"><input type="submit" value="가입 완료"></div></form><span class="src-shared-formStyles__payText--mJLuV">결제 정보요? 충분히 둘러보기고 입력해도 늦지 않아요</span></div></div></div></div><footer class="src-components-Footer-styles__footer--2tvn_"><div class="src-components-Footer-styles__column--31z1-"><ul><li class="src-components-Footer-styles__listItem--18Vzi">고객 센터<span class="src-components-Footer-styles__email--34hOR">cs@watchaplay.net</span><span>・ 02-515-9985(유료)</span></li><li class="src-components-Footer-styles__listItem--18Vzi">제휴 및 대외 협력<span class="src-components-Footer-styles__email--34hOR">contact@frograms.com</span><span>・ 070-7554-9696(유료)</span></li></ul></div><div class="src-components-Footer-styles__column--31z1-"><span>주식회사 프로그램스 / 대표 박태훈 / 서울 특별시 강남구 도산대로 155 국제빌딩 3층 / 사업자등록번호 211-88-66013 / 통신판매업 신고번호 제 2015-서울강남-03855호 / 대표번호 02-515-9985</span></div></footer></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script type="text/javascript" src="./React App_files/bundle.js"></script>
+
+</body></html>

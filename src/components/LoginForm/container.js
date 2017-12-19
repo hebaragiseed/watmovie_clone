@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LoginForm from './presenter';
 
 class Container extends Component{
   state = {
-    useremail: '',
-    userpassword: ''
+    email: '',
+    password: ''
+  }
+  static propTypes = {
+    loginGoogleUser: PropTypes.func.isRequired,
+    useremailLogin: PropTypes.func.isRequired
   }
   render() {console.log(this.props)
-    const { useremail, userpassword } = this.state;
+    const { email, password } = this.state;
     return (
       <LoginForm 
         handleInputChange={this._handleInputChange}
         handleGoogleLogin={this._handleGoogleLogin}
         handleSubmit={this._handleSubmit}
-        useremailValue={useremail}
-        userpasswordValue={userpassword}
+        emailValue={email}
+        passwordValue={password}
         />
     )
   }
@@ -23,12 +28,17 @@ class Container extends Component{
     this.setState({
       [name] : value
     })
-    console.log(this.state);
+    //console.log(this.state);
   };
   _handleSubmit = event => {
-    event.preventDefault()
-  }
-  _handleGoogleLogin = (props) => (this.props.loginGoogleUser())
+    const { useremailLogin } = this.props;
+    const { email, password } = this.state;
+    event.preventDefault();
+    useremailLogin(email, password);
+  };
+  _handleGoogleLogin = (result) => {
+    this.props.loginGoogleUser(result.token)
+  };
 }
 
 export default Container;

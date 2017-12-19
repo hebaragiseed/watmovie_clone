@@ -13,9 +13,9 @@ export const SignupForm = (props, context) => (
           <input
             type="name"
             placeholder={context.t("이름(홍길동)")}
-            value={props.usernameValue}
+            value={props.nameValue}
             onChange={props.handleInputChange}
-            name="username"
+            name="name"
           />
         </label>
         <label className={formStyles.inputBox}>
@@ -24,16 +24,16 @@ export const SignupForm = (props, context) => (
             placeholder="example@gmail.com"
             value={props.emailValue}
             onChange={props.handleInputChange}
-            name="useremail"
+            name="email"
           />
         </label>
         <label className={formStyles.inputBox}>
           <input
             type="password"
-            placeholder={context.t("비밀번호 (6자이상)")}
+            paswordplaceholder={context.t("비밀번호 (6자이상)")}
             value={props.passwordValue}
             onChange={props.handleInputChange}
-            name="userpassword"
+            name="password"
           />
         </label>
       </div>
@@ -51,9 +51,9 @@ export const SignupForm = (props, context) => (
   </div>
 );
 SignupForm.propTypes = {
-  usernameValue: PropTypes.string.isRequired,
-  useremailValue: PropTypes.string.isRequired,
-  userpasswordValue: PropTypes.string.isRequired,
+  nameValue: PropTypes.string.isRequired,
+  emailValue: PropTypes.string.isRequired,
+  passwordValue: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
 }

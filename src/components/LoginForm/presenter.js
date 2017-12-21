@@ -1,6 +1,6 @@
 import React from 'react';
-//import FacebookLogin from 'react-facebook-login';
 import PropTypes from 'prop-types';
+import Ionicon from 'react-ionicons';
 import formStyles from 'shared/formStyles.scss';
 
 export const LoginForm = (props, context) => (
@@ -38,10 +38,16 @@ export const LoginForm = (props, context) => (
         />
       </div>
     </form>
-    <span className={formStyles.facebookText}>{context.t('이전에 Facebook으로 가입하셨나요?')}</span>
-    <span className={formStyles.googleLink} onClick={props.handleGoogleLogin}>
-      googleLink
+    <span className={formStyles.facebookText}>{context.t('이전에 Facebook으로 가입하셨나요?')}
     </span>
+    <button className={formStyles.facebookLink}>
+      <Ionicon icon="logo-facebook" font-size="12px" color="white" />
+        facebook으로 로그인        
+    </button>
+    <button className={formStyles.googleLink} onClick={props.handleGoogleLogin}>
+      <Ionicon icon="logo-google" font-size="11px" color="white" />
+        google로 로그인        
+    </button>
   </div>
 );
 LoginForm.propTypes = {

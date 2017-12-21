@@ -10,7 +10,7 @@ import { translations } from 'translations';
 
 
 console.log(store.getState())
-store.dispatch({type:'bullshit'})
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

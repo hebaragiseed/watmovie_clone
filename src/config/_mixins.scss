@@ -66,5 +66,7 @@ $ihpone6plus-width: 450px;
   }
   @else if $color == blue {
     background-color: #4065b3;
+  }@else if $color == red {
+    background-color: red;
   }
 }

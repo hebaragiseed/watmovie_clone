@@ -31,7 +31,7 @@ function loginGoogleUser() {
           // This gives you a Google Access Token. You can use it to access the Google API.
           const token = result.credential.accessToken;
            console.log(token)
-          localStorage.setItem("jwt", token);
+          
            dispatch(saveToken(token))
           // ...
         }

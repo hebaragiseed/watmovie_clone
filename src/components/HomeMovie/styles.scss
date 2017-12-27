@@ -1,0 +1,72 @@
+.homeMovie {
+  width: 100%;
+  margin-top: 60px;
+  .upColumn{
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: $bg-color;
+    z-index: -1;
+    .imageBox {
+      width: 75%;
+      position: relative;
+
+      &:before{
+        content:"";
+        display: block;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        height: 100px;
+        background-image:linear-gradient(to bottom, $bg-color, $bg-color 10%, rgba(0,0,0,0));
+      }
+      &:after{
+        content:"";
+        display: block;
+        position: absolute;
+        width: 40%;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-image:linear-gradient(to right, $bg-color, rgba(0,0,0,0));
+      }
+    }
+  }
+} 
+.movieExplain {
+  width: 25%;
+  position: relative;
+  height: auto;
+  .textBox {
+    position: absolute;
+    left: 0;
+    bottom: 65px;
+    margin-left: 50px;
+    width: 760px;
+    color: $white;
+    h2 {
+      font-size: 0;
+    }
+    h3 {
+      font-size: 48px;
+      font-weight: $fontW-m;
+    }
+    .commentBox {
+      margin: 15px 0;
+      .year {
+        font-size: 12px;
+      }
+      .age {
+        display: inline-block;
+        border: 1px solid $white;
+        margin:  0 8px;
+        padding: 2px;
+      }
+    }
+    p {
+      margin-bottom: 8px;
+    }
+  }
+}
+.downColumn{
+  background-color: $bg-color;
+}

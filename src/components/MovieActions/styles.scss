@@ -1,0 +1,43 @@
+.movieActions { 
+  button {
+    border: none;
+    background-color: transparent;
+    padding: 8px 24px 8px 0;
+    text-align: center;
+    z-index: 100;
+   cursor: pointer;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: url(images/like.svg) no-repeat;
+      vertical-align: middle;
+      margin-right: 7px;
+    }
+    span {
+      color: $white;
+      font-size: 16px;
+      vertical-align: middle;
+    }
+  }
+  .likeCircle {
+    &:hover {
+      &:before {
+        background: url(images/likeHover.svg) no-repeat;
+      }
+    }
+  }
+  .hateCircle {
+  cursor: pointer;
+  pointer-events: auto;
+  &:hover {
+    &:before {
+      background: url(images/hateHover.svg) no-repeat;
+    }
+  }
+  &:before {
+    background: url(images/hate.svg) no-repeat;
+  }
+  } 
+}

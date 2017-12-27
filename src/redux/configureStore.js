@@ -5,6 +5,7 @@ import createHistory from 'history/createBrowserHistory';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { i18nState } from 'redux-i18n';
 import user from 'redux/modules/user';
+import movies from 'redux/modules/movies';
 
 const env = process.env.NODE_ENV;
 
@@ -20,6 +21,7 @@ if (env === 'development') {
 
 const reducer = combineReducers({
   user,
+  movies,
   routing: routerReducer,
   i18nState
 })

@@ -5,9 +5,10 @@ import './styles.scss';
 import Auth from 'components/Auth';
 import Footer from 'components/Footer';
 import Navigation from 'components/Navigation';
+import Home from 'components/Home';
 
 const App = props => [
-  props.isLoggedIn ? <Navigation key={1} /> : null, 
+  props.isLoggedIn ? <Navigation key={1} /> : null,
   props.isLoggedIn ? <PrivateRoutes key={2} /> : <PublicRoutes key={2} />,
    <Footer key={3} />
 ];
@@ -18,8 +19,8 @@ App.propTypes = {
 
 const PrivateRoutes = props => (
   <Switch>
-    <Route key="1" exact path='/' render={() => 'feed'} />,
-    <Route key="2" exact path='/explore' render={() => 'explore'} />
+    <Route key="1" exact path='/' component={Home} />,
+    <Route key="2" exact path='/wishes' render={() => 'wishes'} />
   </Switch>
 );
 

@@ -9,7 +9,7 @@ const Navigation = (props, context) => (
   <div className={styles.navigation}>
     <div className={styles.event}>      
       <div className={styles.eventColumn}>
-        <h2>event</h2>
+        <span>event</span>
         <p>첫 1개월 무료 체험 이벤트! 모든 제품 무제한 감상하세요 마음에 들지 않으면 클릭 1번으로 언제든 해지할 수 있어요.
         </p>
       </div>

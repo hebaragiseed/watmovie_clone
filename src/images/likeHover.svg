@@ -1,0 +1,12 @@
+
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="likeHover" transform="translate(2.000000, 2.000000)">
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#FFFFFF" cx="10" cy="10" r="10"></circle>
+            <path d="M4.64866621,5.76394732 C5.75993565,4.74535089 7.54371358,4.74535089 10,5.76394732 L10,15.1960784 C6.70824016,13.278805 4.72461454,11.7848418 4.04912312,10.7141889 C3.03588598,9.10820955 2.98176206,7.29184196 4.64866621,5.76394732 Z M15.3513338,5.76394732 C17.0182379,7.29184196 16.964114,9.10820955 15.9508769,10.7141889 C15.2753855,11.7848418 13.2917598,13.278805 10,15.1960784 L10,5.76394732 C12.4562864,4.74535089 14.2400644,4.74535089 15.3513338,5.76394732 Z" id="Combined-Shape" fill="#000000"></path>
+        </g>
+    </g>
+</svg>

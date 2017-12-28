@@ -1,16 +1,15 @@
 .homeMovie {
   width: 100%;
-  margin-top: 60px;
+  background-color: $bg-color;
   .upColumn{
     display: flex;
     flex-direction: row-reverse;
-    background-color: $bg-color;
     z-index: -1;
+    padding-top: 60px;
     .imageBox {
       width: 75%;
       position: relative;
-
-      &:before{
+       &:before{
         content:"";
         display: block;
         position: absolute;

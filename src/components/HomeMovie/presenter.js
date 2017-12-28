@@ -30,13 +30,6 @@ const HomeMovie = (props, context) => {
     </div>
     <div className={styles.downColumn}>
       <MovieComments comments={props.comments} />
-      <p>jdlfjsldfkskfj</p>
-      <p>jdlfjsldfkskfj</p>
-      <p>jdlfjsldfkskfj</p>
-      <p>jdlfjsldfkskfj</p>
-      <p>jdlfjsldfkskfj</p>
-      <p>jdlfjsldfkskfj</p>
-      <p>jdlfjsldfkskfj</p>
     </div>
   </div>
   );

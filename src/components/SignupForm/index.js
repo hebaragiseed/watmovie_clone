@@ -4,8 +4,8 @@ import { actionCreators as userActions } from 'redux/modules/user';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    createAccount: (password, email) => {
-      dispatch(userActions.createAccount(password, email));
+    createAccount: (password, email, name) => {
+      dispatch(userActions.createAccount(password, email, name));
     }
   }
 }

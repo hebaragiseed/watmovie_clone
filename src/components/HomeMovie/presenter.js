@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import MovieActions from 'components/MovieActions';
 import MovieComments from 'components/MovieComments';
+import CommentBox from 'components/CommentBox';
 
 const HomeMovie = (props, context) => {
   return (
@@ -10,7 +11,7 @@ const HomeMovie = (props, context) => {
     <div className={styles.upColumn}>
       <div className={styles.imageBox}>
         <img src={props.background_image} alt={`${props.title} 이미지`} />
-        <div className={styles.imageTop}> </div>
+        <div className={styles.imageGradient}> </div>
       </div>
       <div className={styles.movieExplain}>
         <div className={styles.textBox}>
@@ -30,6 +31,7 @@ const HomeMovie = (props, context) => {
     </div>
     <div className={styles.downColumn}>
       <MovieComments comments={props.comments} />
+      <CommentBox />
     </div>
   </div>
   );

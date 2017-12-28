@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
 const MovieComments = (props) => (
-  <div>
+  <div className={styles.movieComments}>
     <ul>
       <Comment />
         {props.comments.map(comment => (
@@ -13,7 +13,7 @@ const MovieComments = (props) => (
             key={comment.id}
            />
         ))}
-    </ul>
+    </ul> 
   </div>
 );
 

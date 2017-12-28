@@ -13,42 +13,46 @@ function saveToken(token) {
   };
 }
 
-function loginUserSuccess() {
+function loginUserSuccess(user) {
   return {
-    type: LOGIN_USER_SUCCESS,
+    type: LOGIN_USER_SUCCESS
   }
 }
 //API actions
+//Google로 로그인할 때 토큰받아와서 저장,
+//로그인한 user정보 가져오기
 function loginGoogleUser() {
   return function(dispatch) {
-    // dispatch({
-    //   type: 'LOGIN_USER_REQUEST'
-    // })
     auth.signInWithPopup(googleProvider)
-    //auth.signInWithPoPup(googleProvider)
       .then((result) => {
         if (result.credential) {
+          console.log(result.user)
           // This gives you a Google Access Token. You can use it to access the Google API.
           const token = result.credential.accessToken;
-           console.log(token)
+          const name= result.user.displayName;
+          const email= result.user.email;
+          const uid = result.user.uid;
           
-           dispatch(saveToken(token))
-          // ...
+          //const user =  result.user;
+          //console.log(user.providerData)
+          console.log(token)
+          //localStorage.setItem("jwt", token);
+          dispatch(saveToken(token))
+          database.ref('users/' + uid).set({
+            username: name,
+            email: email,
+            //profile_picture : imageUrl
+          }); 
+            database.ref('users/' + uid).once('value').then(function(snapshot) {
+              var username = snapshot.val().username
+              console.log(username)          
+            });
         }
-        // var user = result.user;
-        // dispatch({
-        //   type: 'LOGIN_USER_SUCCESS',
-        //   payload: {
-        //     name: user.additionalUserInfo.profile.name,
-        //     profileImageUrl: user.additionalUserInfo.profile.picture,
-        //     email: user.additionalUserInfo.profile.email
-        //   }
-        // })
       })
-      
       .catch(error => console.log(error))
   }
 }
+//이메일로 로그인할때, user uid로 정보가져오기
 function useremailLogin( email, password ) {
   return function(dispatch) {
     auth.signInWithEmailAndPassword(
@@ -58,43 +62,42 @@ function useremailLogin( email, password ) {
     .then((result) => {
       if (result.refreshToken) {
         const token = result.refreshToken;
-          console.log(token)
-          localStorage.setItem("jwt", token);
-          dispatch(saveToken(token))
-        // auth.onAuthStateChanged(function(user) {
-        //   if (user) {
-        //     console.log(user)
-        //   } else {
-        //     // No user is signed in.
-        //   }
-        // });
-      }
-      //dispatch(loginUserSuccess())
+        const uid = result.uid;
+        //const user = auth.currentUser;
+        console.log(token)
+        //localStorage.setItem("jwt", token);
+        dispatch(saveToken(token))//왜 토큰저장이 안되나;;;
+          database.ref('users/' + uid).once('value').then(function(snapshot) {
+          var username = snapshot.val().username
+          console.log(username)          
+        });
+      }     
     })
-
-    
-    .catch((error) => {
+      .catch((error) => {
       console.log("Login Failed!", error);
     });
   }
 }
-
-function createAccount( email, password ) {
-  return function(dispatch) {
+//이메일로 회원가입 할때 , 가입하면 바로 로그인됨
+function createAccount( email, password, name) {
+  return function(dispatch) {   
     auth.createUserWithEmailAndPassword(
       email,      
       password
     )
-    .then((result) => {
-      if (result.refreshToken) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const token = result.refreshToken;
-         console.log(token)
-        localStorage.setItem("jwt", token);
-         dispatch(saveToken(token))
-        // ...
-      }
-    })
+   //가입되면 저장된 결과에서 토큰가져오기
+    .then((result)=>{
+      const token = result.refreshToken;
+      const uid = result.uid;
+      localStorage.setItem("jwt", token);
+        dispatch(saveToken(token))
+    //가입완료 되면 DB에 uid 저장 
+      database.ref('users/' + uid).set({
+        username: name,
+        email: email,
+        //profile_picture : imageUrl
+      }); 
+    })    
     .catch((error) => {
       console.log("Login Failed!", error);
     });
@@ -104,7 +107,10 @@ function createAccount( email, password ) {
 //initial state
 const initialState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
-  token: localStorage.getItem('jwt')
+  token: localStorage.getItem('jwt'),
+  name: '',
+  email: '',
+  profileImageUrl: '',
 };
 //reducer
 function reducer(state = initialState, action) {
@@ -118,15 +124,7 @@ function reducer(state = initialState, action) {
   }
 }
 //reducer functions
-// function applySetLogin(state, action) {
-//   return {
-//     ...state,
-//     name: action.payload.name,
-//     profileImageUrl: action.payload.profileImageUrl,
-//     email: action.payload.email,
-//     //isLoggedIn: true
-//   }
-// }
+
 function applySetToken(state, action) {
   const { token } = action;
   localStorage.getItem("jwt", token)
@@ -140,9 +138,12 @@ function applySetToken(state, action) {
 function applySetLogin(state, action) {
   return {
     ...state,
-    isLoggedIn: true  
-  };
+    name: action.payload.name,
+    profileImageUrl: action.payload.profileImageUrl,
+    email: action.payload.email,  
+  }
 }
+
 
 //export 
 const actionCreators = {

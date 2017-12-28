@@ -9,7 +9,7 @@
     .imageBox {
       width: 75%;
       position: relative;
-       &:before{
+      &:before, .imageGradient{
         content:"";
         display: block;
         position: absolute;
@@ -27,6 +27,16 @@
         left: 0;
         height: 100%;
         background-image:linear-gradient(to right, $bg-color, rgba(0,0,0,0));
+      }
+      .imageGradient{
+        content:"";
+        display: block;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom:0;
+        height: 100px;
+        background-image:linear-gradient(to top, $bg-color, $bg-color 10%, rgba(0,0,0,0));
       }
     }
   }
@@ -68,4 +78,5 @@
 }
 .downColumn{
   background-color: $bg-color;
+  padding-left: 50px;
 }

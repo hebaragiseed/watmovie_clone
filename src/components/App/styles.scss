@@ -7,9 +7,9 @@
 html {
   height: 100%;
   width: 100%;
+  background-color: $bg-color;
 }
 body {
-   //background-color: $bg-color;
    font-family: "Noto Sans", "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
    height: 100%;
    background: url(images/radioStar.jpg) no-repeat;
@@ -20,7 +20,8 @@ body > div {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  //background-color: rgba(25, 25, 25, 0.84);
+  background-color: rgba(25, 25, 25, 0.84);
+
 }
 img {
   max-width: 100%;

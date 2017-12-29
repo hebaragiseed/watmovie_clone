@@ -15,8 +15,6 @@ function getMovies() {
     database.ref('/movies').on('value', (value) => {
     //dispatch(setMovies(snapshot.val()))    
     dispatch(setMovies(value.val()))
-    
-
     })
   }
 }

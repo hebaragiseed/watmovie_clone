@@ -3,7 +3,7 @@ import { auth, database, googleProvider } from 'firebase/client';
 
 //actions
 const SAVE_TOKEN = 'SAVE_TOKEN';
-const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+const SET_USERS = 'SET_USERS';
 
 //action creators
 function saveToken(token) {
@@ -13,46 +13,43 @@ function saveToken(token) {
   };
 }
 
-function loginUserSuccess(user) {
+function setUsers(currentUser) {
   return {
-    type: LOGIN_USER_SUCCESS
+    type: SET_USERS,
+    currentUser
   }
 }
 //API actions
-//Google로 로그인할 때 토큰받아와서 저장,
-//로그인한 user정보 가져오기
+//Google로 로그인할 때 토큰받아와서 DB에 저장하고 DB에서 uid로 정보 불러오기
 function loginGoogleUser() {
   return function(dispatch) {
     auth.signInWithPopup(googleProvider)
       .then((result) => {
         if (result.credential) {
           console.log(result.user)
-          // This gives you a Google Access Token. You can use it to access the Google API.
           const token = result.credential.accessToken;
           const name= result.user.displayName;
           const email= result.user.email;
           const uid = result.user.uid;
-          
-          //const user =  result.user;
-          //console.log(user.providerData)
-          console.log(token)
-          //localStorage.setItem("jwt", token);
+      
           dispatch(saveToken(token))
+          //DB에 uid저장
           database.ref('users/' + uid).set({
             username: name,
             email: email,
             //profile_picture : imageUrl
           }); 
-            database.ref('users/' + uid).once('value').then(function(snapshot) {
-              var username = snapshot.val().username
-              console.log(username)          
-            });
+          //DB에서 로그인한 currentUser정보불러옴
+          database.ref('users/' + uid).once('value').then(function(snapshot) {
+            var currentUser= snapshot.val()
+            dispatch(setUsers(currentUser))        
+          });
         }
       })
-      .catch(error => console.log(error))
+      .catch(error => alert(error))
   }
 }
-//이메일로 로그인할때, user uid로 정보가져오기
+//이메일로 로그인할때, DB에서 uid로 정보가져오기
 function useremailLogin( email, password ) {
   return function(dispatch) {
     auth.signInWithEmailAndPassword(
@@ -63,18 +60,17 @@ function useremailLogin( email, password ) {
       if (result.refreshToken) {
         const token = result.refreshToken;
         const uid = result.uid;
-        //const user = auth.currentUser;
-        console.log(token)
-        //localStorage.setItem("jwt", token);
-        dispatch(saveToken(token))//왜 토큰저장이 안되나;;;
+        //const user = auth.currentUser;    
+        dispatch(saveToken(token))
+        //DB에서 로그인한 currentUser정보 불러옴
           database.ref('users/' + uid).once('value').then(function(snapshot) {
-          var username = snapshot.val().username
-          console.log(username)          
+          const currentUser = snapshot.val()           
+          dispatch(setUsers(currentUser))        
         });
       }     
     })
       .catch((error) => {
-      console.log("Login Failed!", error);
+      alert(error)
     });
   }
 }
@@ -99,7 +95,7 @@ function createAccount( email, password, name) {
       }); 
     })    
     .catch((error) => {
-      console.log("Login Failed!", error);
+      alert(error);
     });
   }
 }
@@ -108,17 +104,15 @@ function createAccount( email, password, name) {
 const initialState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
   token: localStorage.getItem('jwt'),
-  name: '',
-  email: '',
-  profileImageUrl: '',
+  currentUser: {}
 };
 //reducer
 function reducer(state = initialState, action) {
   switch(action.type) {
     case SAVE_TOKEN:
       return applySetToken(state, action) 
-    case LOGIN_USER_SUCCESS:
-      return applySetLogin(state, action)
+    case SET_USERS:
+      return applySetUsers(state, action)
     default:
       return state;
   }
@@ -127,7 +121,7 @@ function reducer(state = initialState, action) {
 
 function applySetToken(state, action) {
   const { token } = action;
-  localStorage.getItem("jwt", token)
+  localStorage.setItem("jwt", token)
   return {
     ...state,
     isLoggedIn: true,
@@ -135,23 +129,22 @@ function applySetToken(state, action) {
   }
 }
 
-function applySetLogin(state, action) {
+function applySetUsers(state, action) {
+  const { currentUser } = action;
   return {
     ...state,
-    name: action.payload.name,
-    profileImageUrl: action.payload.profileImageUrl,
-    email: action.payload.email,  
+    currentUser
+    
   }
 }
-
 
 //export 
 const actionCreators = {
   loginGoogleUser,
   useremailLogin,
   createAccount,
-  loginUserSuccess
-
+  setUsers,
+  applySetUsers
 };
 
 export { actionCreators };

@@ -1,5 +1,6 @@
 .movieActions { 
-  button {
+  //보고싶어요button, 관심없어요button
+  button, .likeFalse {
     border: none;
     background-color: transparent;
     padding: 8px 24px 8px 0;
@@ -21,23 +22,25 @@
       vertical-align: middle;
     }
   }
-  .likeCircle {
-    &:hover {
+   .likeTrue {
+    // &:hover {
+    //   &:before {
+    //     background: url(images/likeHover.svg) no-repeat;
+    //   }
+    // }
+    //보고싶어요 버튼 trued 일때
       &:before {
-        background: url(images/likeHover.svg) no-repeat;
-      }
+        background: url(images/likeHover.svg) no-repeat;      
     }
   }
-  .hateCircle {
-  cursor: pointer;
-  pointer-events: auto;
-  &:hover {
+  .hateTrue {
     &:before {
       background: url(images/hateHover.svg) no-repeat;
     }
-  }
-  &:before {
-    background: url(images/hate.svg) no-repeat;
-  }
   } 
+  .hateFalse {
+    &:before {
+      background: url(images/hate.svg) no-repeat;    
+    }
+  }  
 }

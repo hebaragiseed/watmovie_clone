@@ -24,7 +24,10 @@ const HomeMovie = (props, context) => {
           </div>
           <p>{props.story}</p>
           <div>
-            <MovieActions number={props.like_count}/>
+            <MovieActions 
+              number={props.like_count}
+              isLiked={props.is_liked}
+              movieId={props.id}/>
           </div>
         </div>
       </div> 
@@ -46,7 +49,6 @@ HomeMovie.propTypes = {
   }).isRequired,
   division: PropTypes.string.isRequired,
   like_count: PropTypes.number.isRequired,
-  hate_count: PropTypes.number.isRequired,
   comments: PropTypes.arrayOf(
     PropTypes.shape({
       message: PropTypes.string.isRequired,
@@ -54,8 +56,10 @@ HomeMovie.propTypes = {
         username: PropTypes.string.isRequired
       }).isRequired
     })
-  ).isRequired
-};
+  ).isRequired,
+  is_liked: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
+}; 
 
 
 export default HomeMovie;

@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import MovieActions from './presenter';
 
-const Container = props => <div>{console.log(props)}<MovieActions {...props} /></div>;
+class Container extends Component {
+  render() {
+    return <MovieActions {...this.props} />
+  }
+}
 
 export default Container;

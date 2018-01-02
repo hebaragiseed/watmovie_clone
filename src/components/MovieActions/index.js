@@ -1,4 +1,16 @@
 import { connect } from 'react-redux';
 import Container from './container';
+import { actionCreators as movieActions } from 'redux/modules/movies';
 
-export default connect()(Container);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    handleHeartClick: () => {
+    if (ownProps.isLiked) {
+      dispatch(movieActions.unlikeMovie(ownProps.movieId))
+      } else {
+      dispatch(movieActions.likeMovie(ownProps.movieId))
+      }
+    }
+ };
+};
+export default connect(null, mapDispatchToProps)(Container);

@@ -28,8 +28,8 @@ function loginGoogleUser() {
         if (result.credential) {
           console.log(result.user)
           const token = result.credential.accessToken;
-          const name= result.user.displayName;
-          const email= result.user.email;
+          const name = result.user.displayName;
+          const email = result.user.email;
           const uid = result.user.uid;
       
           dispatch(saveToken(token))
@@ -37,6 +37,7 @@ function loginGoogleUser() {
           database.ref('users/' + uid).set({
             username: name,
             email: email,
+            uid
             //profile_picture : imageUrl
           }); 
           //DB에서 로그인한 currentUser정보불러옴
@@ -81,18 +82,23 @@ function createAccount( email, password, name) {
       email,      
       password
     )
-   //가입되면 저장된 결과에서 토큰가져오기
+    //가입되면 저장된 결과에서 토큰가져오기
     .then((result)=>{
       const token = result.refreshToken;
       const uid = result.uid;
       localStorage.setItem("jwt", token);
         dispatch(saveToken(token))
-    //가입완료 되면 DB에 uid 저장 
+      //가입완료 되면 DB에 uid 저장 
       database.ref('users/' + uid).set({
         username: name,
         email: email,
-        //profile_picture : imageUrl
+        uid
       }); 
+      //DB에서 로그인한 currentUser정보 불러옴
+      database.ref('users/' + uid).once('value').then(function(snapshot) {
+        const currentUser = snapshot.val()           
+        dispatch(setUsers(currentUser))        
+      });
     })    
     .catch((error) => {
       alert(error);
@@ -133,8 +139,7 @@ function applySetUsers(state, action) {
   const { currentUser } = action;
   return {
     ...state,
-    currentUser
-    
+    currentUser    
   }
 }
 

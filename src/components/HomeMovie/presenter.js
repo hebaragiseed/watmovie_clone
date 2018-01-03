@@ -34,7 +34,7 @@ const HomeMovie = (props, context) => {
     </div>
     <div className={styles.downColumn}>
       <MovieComments comments={props.comments} />
-      <CommentBox />
+      <CommentBox movieId={props.id}/>
     </div>
   </div>
   );
@@ -49,14 +49,14 @@ HomeMovie.propTypes = {
   }).isRequired,
   division: PropTypes.string.isRequired,
   like_count: PropTypes.number.isRequired,
-  comments: PropTypes.arrayOf(
-    PropTypes.shape({
-      message: PropTypes.string.isRequired,
-      creator: PropTypes.shape({
-        username: PropTypes.string.isRequired
-      }).isRequired
-    })
-  ).isRequired,
+  // comments: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     message: PropTypes.string.isRequired,
+  //     creator: PropTypes.shape({
+  //       username: PropTypes.string.isRequired
+  //     }).isRequired
+  //   })
+  // ).isRequired,
   is_liked: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
 }; 

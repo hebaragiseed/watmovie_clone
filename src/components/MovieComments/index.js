@@ -8,7 +8,7 @@ const MovieComments = (props) => (
       <Comment />
         {props.comments.map(comment => (
           <Comment 
-            username={comment.creator.username}
+            //username={comment.creator.username}
             comment={comment.message}
             key={comment.id}
            />
@@ -20,7 +20,7 @@ const MovieComments = (props) => (
 const Comment = props => (
   <li className={styles.comment}>
     <span>{props.username}</span>
-    <span>{props.comment}</span>
+    <span>!!!!!{props.comment}</span>
   </li>
 );
 

@@ -4,6 +4,7 @@ import { auth, database, googleProvider } from 'firebase/client';
 const SET_MOVIES = 'SET_MOVIES';
 const LIKE_MOVIE = 'LIKE_MOVIE';
 const UNLIKE_MOVIE = 'UNLIKE_MOVIE';
+const ADD_COMMENT = 'ADD_COMMENT';
 //actions creators
 function setMovies(movie) {
   return {
@@ -23,6 +24,13 @@ function doUnlikeMovie(movieId) {
     movieId
   }
 }
+function addComment(movieId, comment) {
+  return {
+    type: ADD_COMMENT,
+    movieId,
+    comment
+  }
+}
 //api actions
 function getMovies() {
   return function (dispatch) {
@@ -34,20 +42,35 @@ function getMovies() {
 }
 function likeMovie(movieId) {
   return (dispatch, getState) => { 
-  const { movies: { movie } } = getState();   
-  dispatch(doLikeMovie(movieId))
-  database.ref(`movies/${movieId}`).update({is_liked: true, like_count: movie[movieId].like_count })
-  .catch((error) => {dispatch(doUnlikeMovie( movieId))})  
+    const { movies: { movie } } = getState();   
+    dispatch(doLikeMovie(movieId))
+    database.ref(`movies/${movieId}`).update({is_liked: true, like_count: movie[movieId].like_count })
+    .catch((error) => {dispatch(doUnlikeMovie( movieId))})  
   }
 }
 function unlikeMovie(movieId) {
   return (dispatch, getState) => {
-  const { movies: { movie } }= getState();   
-  dispatch(doUnlikeMovie( movieId))
-  database.ref(`movies/${movieId}`).update({is_liked: false, like_count: movie[movieId].like_count})
-  .catch((error) => {dispatch(doUnlikeMovie( movieId))} )   
+    const { movies: { movie } }= getState();   
+    dispatch(doUnlikeMovie( movieId))
+    database.ref(`movies/${movieId}`).update({is_liked: false, like_count: movie[movieId].like_count})
+    .catch((error) => {dispatch(doUnlikeMovie( movieId))} )   
   }
 }
+//comment내용 DB에 저장하는 내용 
+function commentMovie(movieId, comment) {
+  return (dispatch, getState) => {
+   // const { movies: { movie: {comments: [comments.lenght]} } } = getState() 
+   const { movies: { movie } }= getState();  
+    const { user: { currentUser: {uid, username} }} = getState();
+    const a = movie[movieId].comments;
+    console.log(a.length)
+    const b = a.length;
+    database.ref(`movies/${movieId}/comments/${b}`).update({creator: {username}, message:comment, id: uid})
+    dispatch(addComment(movieId, comment))
+  }
+}
+
+
 //initial state
 const initialState = {};
 //reducer
@@ -59,6 +82,8 @@ function reducer(state = initialState, action) {
       return applyLikeMovie(state, action);
     case UNLIKE_MOVIE:
       return applyUnlikeMovie(state, action);
+    case ADD_COMMENT:
+      return applyAddComment(state, action);
     default:
       return state;
   }
@@ -102,12 +127,28 @@ function applyUnlikeMovie(state, action) {
   return {...state, movie: updateMovie}
 }
 
+function applyAddComment(state, action) {
+  const { movieId, comment } = action;
+  const { movie } = state;
+  const updateMovie = movie.map(movie => {
+    if (movie.id === movieId) {
+      return {
+        ...movie,
+        comments: [...movie.comments, comment]
+      };
+    }
+    return movie;
+  });
+  return { ...state, movie: updateMovie };
+}
+  
+
 //exports
 const actionCreators = {
   getMovies,
   likeMovie,
-  unlikeMovie
-
+  unlikeMovie,
+  commentMovie
 }
 export { actionCreators };
 //default reducer export

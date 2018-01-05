@@ -49,14 +49,12 @@ HomeMovie.propTypes = {
   }).isRequired,
   division: PropTypes.string.isRequired,
   like_count: PropTypes.number.isRequired,
-  // comments: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     message: PropTypes.string.isRequired,
-  //     creator: PropTypes.shape({
-  //       username: PropTypes.string.isRequired
-  //     }).isRequired
-  //   })
-  // ).isRequired,
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({
+      message: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired
+    })
+  ).isRequired,
   is_liked: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
 }; 

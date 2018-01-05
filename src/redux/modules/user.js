@@ -6,19 +6,21 @@ const SAVE_TOKEN = 'SAVE_TOKEN';
 const SET_USERS = 'SET_USERS';
 
 //action creators
-function saveToken(token) {
+function saveToken(token, currentUser) {
+  console.log(currentUser+'!!!!!!!')
   return {
     type: SAVE_TOKEN,
-    token
+    token,
+    currentUser
   };
 }
 
-function setUsers(currentUser) {
-  return {
-    type: SET_USERS,
-    currentUser
-  }
-}
+// function setUsers(currentUser) {
+//   return {
+//     type: SET_USERS,
+//     currentUser
+//   }
+// }
 //API actions
 //Google로 로그인할 때 토큰받아와서 DB에 저장하고 DB에서 uid로 정보 불러오기
 function loginGoogleUser() {
@@ -32,7 +34,7 @@ function loginGoogleUser() {
           const email = result.user.email;
           const uid = result.user.uid;
       
-          dispatch(saveToken(token))
+          //dispatch(saveToken(token))
           //DB에 uid저장
           database.ref('users/' + uid).set({
             username: name,
@@ -43,7 +45,8 @@ function loginGoogleUser() {
           //DB에서 로그인한 currentUser정보불러옴
           database.ref('users/' + uid).once('value').then(function(snapshot) {
             var currentUser= snapshot.val()
-            dispatch(setUsers(currentUser))        
+            //dispatch(setUsers(currentUser))        
+            dispatch(saveToken(token, currentUser))
           });
         }
       })
@@ -62,11 +65,12 @@ function useremailLogin( email, password ) {
         const token = result.refreshToken;
         const uid = result.uid;
         //const user = auth.currentUser;    
-        dispatch(saveToken(token))
+       // dispatch(saveToken(token))
         //DB에서 로그인한 currentUser정보 불러옴
           database.ref('users/' + uid).once('value').then(function(snapshot) {
           const currentUser = snapshot.val()           
-          dispatch(setUsers(currentUser))        
+          //dispatch(setUsers(currentUser))   
+          dispatch(saveToken(token, currentUser))     
         });
       }     
     })
@@ -87,7 +91,7 @@ function createAccount( email, password, name) {
       const token = result.refreshToken;
       const uid = result.uid;
       localStorage.setItem("jwt", token);
-        dispatch(saveToken(token))
+        //dispatch(saveToken(token))
       //가입완료 되면 DB에 uid 저장 
       database.ref('users/' + uid).set({
         username: name,
@@ -97,7 +101,9 @@ function createAccount( email, password, name) {
       //DB에서 로그인한 currentUser정보 불러옴
       database.ref('users/' + uid).once('value').then(function(snapshot) {
         const currentUser = snapshot.val()           
-        dispatch(setUsers(currentUser))        
+        //dispatch(setUsers(currentUser)) 
+        dispatch(saveToken(token, currentUser))
+               
       });
     })    
     .catch((error) => {
@@ -110,7 +116,7 @@ function createAccount( email, password, name) {
 const initialState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
   token: localStorage.getItem('jwt'),
-  currentUser: {}
+  
 };
 //reducer
 function reducer(state = initialState, action) {
@@ -127,11 +133,15 @@ function reducer(state = initialState, action) {
 
 function applySetToken(state, action) {
   const { token } = action;
+  const { currentUser: { uid,email, username }} = action;
   localStorage.setItem("jwt", token)
   return {
     ...state,
     isLoggedIn: true,
-    token
+    token,
+    email,
+    username,
+    uid
   }
 }
 
@@ -139,7 +149,8 @@ function applySetUsers(state, action) {
   const { currentUser } = action;
   return {
     ...state,
-    currentUser    
+    username: currentUser.username,
+    email: currentUser.email   
   }
 }
 
@@ -148,8 +159,8 @@ const actionCreators = {
   loginGoogleUser,
   useremailLogin,
   createAccount,
-  setUsers,
-  applySetUsers
+  //setUsers,
+  //applySetUsers
 };
 
 export { actionCreators };

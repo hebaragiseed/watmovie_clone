@@ -61,11 +61,13 @@ function commentMovie(movieId, comment) {
   return (dispatch, getState) => {
    // const { movies: { movie: {comments: [comments.lenght]} } } = getState() 
    const { movies: { movie } }= getState();  
-    const { user: { currentUser: {uid, username} }} = getState();
+    const { user:  {uid, username}} = getState();
     const a = movie[movieId].comments;
     console.log(a.length)
     const b = a.length;
-    database.ref(`movies/${movieId}/comments/${b}`).update({creator: {username}, message:comment, id: uid})
+    database.ref(`movies/${movieId}/comments/${b}`).update(
+      {username, message:comment, id: b, uid}
+    )
     dispatch(addComment(movieId, comment))
   }
 }

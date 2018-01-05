@@ -9,7 +9,7 @@ import { translations } from 'translations';
 
 
 
-console.log(store.getState())
+console.log(store.getState()+'store.getState()')
 
 ReactDOM.render(
   <Provider store={store}>
